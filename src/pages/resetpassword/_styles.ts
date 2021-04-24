@@ -22,11 +22,11 @@ export const Content = styled.div`
     display: flex;
     width: 40%;
     height: 100%;
-    background: #f5ddb1;
+    background: #836760;
   }
 
   @media (max-width: 1190px) {
-    background: #f5ddb1;
+    background: #836760;
     height: 150%;
 
     .info {
@@ -63,9 +63,9 @@ export const Merchan = styled.div`
       width: 716px;
     }
 
-    @media (min-width: 2100px) {
+    @media (min-width: 2440px) {
       margin-top: 96px;
-      font-size: 42px;
+      font-size: 40px;
       width: 716px;
     }
 
@@ -91,7 +91,7 @@ export const TextInformation = styled.div`
   h2 {
     font-weight: 700;
     font-family: 'M PLUS Rounded 1c', sans-serif;
-    font-size: 48px;
+    font-size: 38px;
     color: #cdcdcd;
 
     @media (max-width: 1190px) {
@@ -132,53 +132,5 @@ export const FormFormik = styled(Form)`
 
   .separateButton {
     margin-top: 24px;
-  }
-`;
-
-export const OptionsLogin = styled.div`
-  font-family: Poppins;
-  margin-top: 32px;
-  transition: 300ms all;
-
-  span {
-    margin: 0 8px 0 8px;
-    color: #cecece;
-
-    @media (max-width: 1190px) {
-      color: #c2c2c2;
-    }
-  }
-
-  .redefinePasswordMedia {
-    text-decoration: none;
-    color: #c2c2c2;
-
-    :hover {
-      transition: 400ms all;
-      color: #a6a6a6;
-    }
-
-    @media (max-width: 1190px) {
-      color: #c2c2c2;
-    }
-  }
-
-  .signinMedia {
-    text-decoration: none;
-    color: #a0a0a0;
-
-    :hover {
-      transition: 400ms all;
-      color: #d7d6d6;
-    }
-
-    @media (max-width: 1190px) {
-      color: #c2c2c2;
-
-      :hover {
-        transition: 400ms all;
-        color: #a7a6a6;
-      }
-    }
   }
 `;

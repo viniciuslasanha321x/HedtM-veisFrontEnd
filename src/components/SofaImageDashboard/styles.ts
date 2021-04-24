@@ -9,7 +9,7 @@ export const SofaImageComponent = styled.div`
   flex: 1;
 
   img {
-    margin-left: 32px;
+    margin: -52px 0 0 32px;
     width: 90%;
     object-fit: cover;
 

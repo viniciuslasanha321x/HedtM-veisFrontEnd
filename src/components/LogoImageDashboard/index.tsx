@@ -24,11 +24,17 @@ interface LogoProps {
   image: string;
   altImage: string;
   color?: string;
+  colorMedia?: string;
 }
 
-export const Logo: React.FC<LogoProps> = ({ image, altImage, color = '' }) => {
+export const Logo: React.FC<LogoProps> = ({
+  image,
+  altImage,
+  color = '',
+  colorMedia = '',
+}) => {
   return (
-    <LogoComponent color={color}>
+    <LogoComponent color={color} colorMedia={colorMedia}>
       <motion.div
         initial={{ x: -60, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}

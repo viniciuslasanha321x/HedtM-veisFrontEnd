@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface ColorProps {
   color: string;
+  colorMedia: string;
 }
 
 export const LogoComponent = styled.div<ColorProps>`
@@ -23,6 +24,7 @@ export const LogoComponent = styled.div<ColorProps>`
   }
 
   @media (max-width: 1190px) {
+    background-color: ${props => props.colorMedia};
     width: 100%;
 
     & div {

@@ -5,6 +5,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
+
+  @media (max-height: 414px) {
+    overflow-y: auto;
+  }
 `;
 
 export const Content = styled.div`
@@ -17,12 +22,11 @@ export const Content = styled.div`
     display: flex;
     width: 40%;
     height: 100%;
-    background: #836760;
+    background: #b4aca6;
   }
 
   @media (max-width: 1190px) {
-    background: #836760;
-    height: 175%;
+    height: 150%;
 
     .info {
       display: none;
@@ -38,41 +42,8 @@ export const Informations = styled.section`
   flex-direction: column;
 `;
 
-export const Logo = styled.div`
-  display: flex;
-  width: 40%;
-  height: 80px;
-  justify-content: flex-start;
-  align-items: center;
-  background: #836760;
-  z-index: 999;
-
-  & div {
-    width: 180px;
-    margin-left: 50px;
-
-    img {
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 1190px) {
-    width: 100%;
-
-    & div {
-      width: 150px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    width: 100%;
-    justify-content: center;
-
-    & div {
-      width: 150px;
-      margin-left: 0;
-    }
-  }
+export const SofaComponent = styled.div`
+  margin-top: 300px;
 `;
 
 export const Merchan = styled.div`
@@ -87,7 +58,7 @@ export const Merchan = styled.div`
   h2 {
     font-family: Poppins;
     font-weight: 700;
-    font-size: 27px;
+    font-size: 25 px;
     color: #fff;
 
     @media (min-width: 1800px) {
@@ -125,10 +96,6 @@ export const TextInformation = styled.div`
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-size: 48px;
     color: #cdcdcd;
-
-    @media (max-width: 1190px) {
-      color: #fff;
-    }
   }
 `;
 

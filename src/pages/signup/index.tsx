@@ -5,6 +5,8 @@ import { Formik, FormikErrors } from 'formik';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import signUpSchema from './validation';
+import { Logo } from '../../components/LogoImageDashboard';
+import { SofaImageComponentPageDashboard } from '../../components/SofaImageDashboard';
 
 import {
   Container,
@@ -12,12 +14,9 @@ import {
   Informations,
   InputSignIn,
   Merchan,
-  Logo,
-  Arrow,
   ContainerInput,
   TextInformation,
   OptionsLogin,
-  SofaImage,
   FormFormik,
 } from './_styles';
 
@@ -66,15 +65,11 @@ const SignIn: React.FC = () => {
       <Container>
         <Link href="/home">
           <a>
-            <Logo>
-              <motion.div
-                initial={{ x: -60, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
-                <img src="/assets/LogoV3.svg" alt="Image Home" />
-              </motion.div>
-            </Logo>
+            <Logo
+              image="/assets/LogoV3.svg"
+              altImage="Image Logo Page SignIn"
+              color="#836760"
+            />
           </a>
         </Link>
 
@@ -88,15 +83,10 @@ const SignIn: React.FC = () => {
                 </motion.h2>
               </Merchan>
 
-              <SofaImage>
-                <motion.div
-                  initial={{ x: -60, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <img src="/assets/SofaBrown.png" alt="Image Home" />
-                </motion.div>
-              </SofaImage>
+              <SofaImageComponentPageDashboard
+                image="/assets/SofaBrown.png"
+                altImage="second image sofa home"
+              />
             </Informations>
           </div>
 
@@ -157,7 +147,6 @@ const SignIn: React.FC = () => {
                   )}
                 </Formik>
                 <OptionsLogin>
-                  <span>|</span>
                   <Link href="/signin">
                     <a className="signinMedia" href="">
                       Ou Fazer Login

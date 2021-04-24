@@ -53,14 +53,6 @@ export const Logo = styled.div`
 
     img {
       width: 100%;
-
-      @media (max-width: 375px) {
-        margin-left: 50px;
-      }
-
-      @media (max-width: 320px) {
-        margin-left: 30px;
-      }
     }
   }
 
@@ -69,6 +61,16 @@ export const Logo = styled.div`
 
     & div {
       width: 150px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    justify-content: center;
+
+    & div {
+      width: 150px;
+      margin-left: 0;
     }
   }
 `;
@@ -85,7 +87,7 @@ export const Merchan = styled.div`
   h2 {
     font-family: Poppins;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 27px;
     color: #fff;
 
     @media (min-width: 1800px) {
@@ -102,29 +104,6 @@ export const Merchan = styled.div`
     @media (max-width: 1190px) {
       display: none;
     }
-  }
-`;
-
-export const SofaImage = styled.div`
-  display: flex;
-  justify-content: start;
-  align-items: start;
-  align-self: start;
-  transition: 300ms all;
-  flex: 1;
-
-  img {
-    margin-left: 32px;
-    width: 75%;
-    object-fit: cover;
-
-    @media (min-width: 1800px) {
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 1190px) {
-    display: none;
   }
 `;
 

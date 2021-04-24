@@ -38,41 +38,6 @@ export const Informations = styled.section`
   flex-direction: column;
 `;
 
-export const Logo = styled.div`
-  display: flex;
-  width: 40%;
-  height: 80px;
-  justify-content: flex-start;
-  align-items: center;
-  background: #f5ddb1;
-  z-index: 999;
-
-  & div {
-    width: 180px;
-    margin-left: 50px;
-
-    img {
-      width: 100%;
-
-      @media (max-width: 375px) {
-        margin-left: 50px;
-      }
-
-      @media (max-width: 320px) {
-        margin-left: 30px;
-      }
-    }
-  }
-
-  @media (max-width: 1190px) {
-    width: 100%;
-
-    & div {
-      width: 150px;
-    }
-  }
-`;
-
 export const Merchan = styled.div`
   display: flex;
   flex: 1;
@@ -102,29 +67,6 @@ export const Merchan = styled.div`
     @media (max-width: 1190px) {
       display: none;
     }
-  }
-`;
-
-export const SofaImage = styled.div`
-  display: flex;
-  justify-content: start;
-  align-items: start;
-  align-self: start;
-  transition: 300ms all;
-  flex: 1;
-
-  img {
-    margin-left: 32px;
-    width: 90%;
-    object-fit: cover;
-
-    @media (min-width: 1800px) {
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 1190px) {
-    display: none;
   }
 `;
 

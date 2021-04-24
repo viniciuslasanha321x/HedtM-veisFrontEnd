@@ -5,6 +5,8 @@ import { Formik, FormikErrors } from 'formik';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import signInSchema from './validations';
+import { Logo } from '../../components/LogoImageDashboard';
+import { SofaImageComponentPageDashboard } from '../../components/SofaImageDashboard';
 
 import {
   Container,
@@ -12,12 +14,9 @@ import {
   Informations,
   InputSignIn,
   Merchan,
-  Logo,
-  Arrow,
   ContainerInput,
   TextInformation,
   OptionsLogin,
-  SofaImage,
   FormFormik,
 } from './_styles';
 
@@ -66,18 +65,13 @@ const SignIn: React.FC = () => {
       <Container>
         <Link href="/home">
           <a>
-            <Logo>
-              <motion.div
-                initial={{ x: -60, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
-                <img src="/assets/LogoV2.svg" alt="Image Home" />
-              </motion.div>
-            </Logo>
+            <Logo
+              image="/assets/LogoV2.svg"
+              altImage="Image Logo Page SignIn"
+              color="#f5ddb1"
+            />
           </a>
         </Link>
-
         <Content>
           <div className="info">
             <Informations>
@@ -88,15 +82,10 @@ const SignIn: React.FC = () => {
                 </motion.h2>
               </Merchan>
 
-              <SofaImage>
-                <motion.div
-                  initial={{ x: -60, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <img src="/assets/SofaGrey.png" alt="Image Home" />
-                </motion.div>
-              </SofaImage>
+              <SofaImageComponentPageDashboard
+                image="/assets/SofaGrey.png"
+                altImage="second image sofa home"
+              />
             </Informations>
           </div>
 

@@ -7,7 +7,7 @@ export const Container = styled.div`
   height: 100vh;
   overflow: hidden;
 
-  @media (max-height: 414px) {
+  @media (max-height: 480px) {
     overflow-y: auto;
   }
 `;

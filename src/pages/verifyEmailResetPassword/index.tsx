@@ -4,7 +4,7 @@ import React from 'react';
 import { Formik, FormikErrors } from 'formik';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import signInSchema from './validations';
+import verifyEmailResetPasswordSchema from './validation';
 import { Logo } from '../../components/LogoImageDashboard';
 import { SofaImageComponentPageDashboard } from '../../components/SofaImageDashboard';
 
@@ -16,14 +16,11 @@ import {
   Merchan,
   ContainerInput,
   TextInformation,
-  OptionsLogin,
   FormFormik,
-} from './_styles';
+} from './styles';
 
 interface FormValues {
   email: string;
-  password: string;
-  name: string;
 }
 
 const easing = [0.6, -0.5, 0.01, 0.99];
@@ -47,17 +44,13 @@ const fadeInUp = {
 interface DataClickFormik {
   errors: FormikErrors<FormValues>;
   email;
-  password;
-  name;
   setErrors: (err: FormikErrors<FormValues>) => void;
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const SignIn: React.FC = () => {
+const VerifiyEmailResetPassword: React.FC = () => {
   const initialValues: FormValues = {
     email: '',
-    password: '',
-    name: '',
   };
 
   return (
@@ -66,9 +59,9 @@ const SignIn: React.FC = () => {
         <Link href="/home">
           <a>
             <Logo
-              image="/assets/LogoV2.svg"
+              image="/assets/LogoV5.svg"
               altImage="Image Logo Page SignIn"
-              color="#f5ddb1"
+              color="#AFB47C"
             />
           </a>
         </Link>
@@ -77,78 +70,53 @@ const SignIn: React.FC = () => {
             <Informations>
               <Merchan>
                 <motion.h2 variants={fadeInUp}>
-                  Oferecemos A Melhor Qualidade E Preço Para Que Você Fique 100%
-                  Satisfeito Na Compra Do Seu Móvel
+                  Eita Você Perdeu Sua Senha?, Não Se Preocupe, Você Está Nesse
+                  Exato Momento Na Página De Solução
                 </motion.h2>
               </Merchan>
 
               <SofaImageComponentPageDashboard
-                image="/assets/SofaGrey.png"
-                altImage="second image sofa home"
+                image="/assets/Table.png"
+                altImage="image sofa home"
               />
             </Informations>
           </div>
 
           <ContainerInput>
             <TextInformation>
-              <motion.h2 variants={fadeInUp}>Login</motion.h2>
+              <motion.h2 variants={fadeInUp}>Redefinir Senha</motion.h2>
             </TextInformation>
 
             <motion.div variants={fadeInUp}>
               <InputSignIn>
                 <Formik
                   initialValues={initialValues}
-                  validationSchema={signInSchema}
+                  validationSchema={verifyEmailResetPasswordSchema}
                   onSubmit={values => console.log(values)}
                 >
                   {({ touched, errors, values }) => (
                     <FormFormik>
-                      <div className="separateInput">
-                        <Input
-                          name="email"
-                          type="text"
-                          placeholder="E-mail"
-                          error={errors.email}
-                          touched={touched.email}
-                          value={values.email}
-                        />
-                      </div>
-
                       <Input
-                        name="password"
-                        type="password"
-                        iconEye
-                        placeholder="Senha"
-                        error={errors.password}
-                        touched={touched.password}
-                        value={values.password}
+                        name="email"
+                        type="text"
+                        placeholder="Coloque Seu Email"
+                        error={errors.email}
+                        touched={touched.email}
+                        value={values.email}
                       />
 
                       <div className="separateButton">
                         <Button
                           title="Continuar"
-                          color="#E9C98F"
-                          colorFont="#F8f8f8"
-                          colorHover="PaleGoldenrod"
-                          type="button"
+                          color="#B3CAA8"
+                          colorFont="White"
+                          colorHover="#ABC79D"
+                          type="submit"
                         />
                       </div>
                     </FormFormik>
                   )}
                 </Formik>
-                <OptionsLogin>
-                  <Link href="/verifyEmailResetPassword">
-                    <a className="redefinePasswordMedia" href="">
-                      Redefinir Senha
-                    </a>
-                  </Link>
-                  <span>|</span>
-                  <Link href="/signup">
-                    <a className="signinMedia" href="">
-                      Cadastrar-se
-                    </a>
-                  </Link>
-                </OptionsLogin>
               </InputSignIn>
             </motion.div>
           </ContainerInput>
@@ -158,4 +126,4 @@ const SignIn: React.FC = () => {
   );
 };
 
-export default SignIn;
+export default VerifiyEmailResetPassword;

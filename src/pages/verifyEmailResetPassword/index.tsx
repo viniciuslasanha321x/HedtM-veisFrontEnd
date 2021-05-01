@@ -110,7 +110,6 @@ const VerifiyEmailResetPassword: React.FC = () => {
                           title="Continuar"
                           color="#B3CAA8"
                           colorFont="White"
-                          colorHover="#ABC79D"
                           type="submit"
                         />
                       </div>

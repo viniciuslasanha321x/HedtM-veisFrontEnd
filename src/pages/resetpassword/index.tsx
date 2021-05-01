@@ -52,7 +52,7 @@ interface DataClickFormik {
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const SignIn: React.FC = () => {
+const ResetPassword: React.FC = () => {
   const initialValues: FormValues = {
     password: '',
     newpassword: '',
@@ -127,7 +127,6 @@ const SignIn: React.FC = () => {
                           title="Continuar"
                           color="#B98E85"
                           colorFont="White"
-                          colorHover="#AE8278"
                           type="submit"
                         />
                       </div>
@@ -143,4 +142,4 @@ const SignIn: React.FC = () => {
   );
 };
 
-export default SignIn;
+export default ResetPassword;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
+import { shade } from 'polished';
 
 export const Container = styled.div`
   display: flex;
@@ -168,7 +169,7 @@ export const OptionsLogin = styled.div`
 
     :hover {
       transition: 400ms all;
-      color: #d7d6d6;
+      color: ${shade(0.2, '#a0a0a0')};
     }
 
     @media (max-width: 1190px) {

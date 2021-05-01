@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
+import { shade } from 'polished';
 
 export const Container = styled.div`
   display: flex;
@@ -56,7 +57,7 @@ export const Merchan = styled.div`
     font-family: Poppins;
     font-weight: 700;
     font-size: 24px;
-    color: #fff;
+    color: #a8a8a8;
 
     @media (min-width: 1800px) {
       font-size: 32px;
@@ -155,7 +156,7 @@ export const OptionsLogin = styled.div`
 
     :hover {
       transition: 400ms all;
-      color: #a6a6a6;
+      color: ${shade(0.2, '#c2c2c2')};
     }
 
     @media (max-width: 1190px) {
@@ -169,7 +170,7 @@ export const OptionsLogin = styled.div`
 
     :hover {
       transition: 400ms all;
-      color: #d7d6d6;
+      color: ${shade(0.2, '#a0a0a0')};
     }
 
     @media (max-width: 1190px) {
@@ -177,7 +178,7 @@ export const OptionsLogin = styled.div`
 
       :hover {
         transition: 400ms all;
-        color: #a7a6a6;
+        color: ${shade(0.2, '#c2c2c2')};
       }
     }
   }

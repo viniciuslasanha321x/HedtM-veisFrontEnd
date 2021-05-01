@@ -26,7 +26,6 @@ interface ButtonPropos {
   type?: string;
   color?: string;
   colorFont?: string;
-  colorHover?: string;
 }
 
 const Button: React.FC<ButtonPropos> = ({
@@ -34,17 +33,11 @@ const Button: React.FC<ButtonPropos> = ({
   title,
   color = '#8ba2b6',
   colorFont = '#fff',
-  colorHover = '#758a9c',
 }) => {
   return (
     <>
       <motion.div variants={fadeInUp}>
-        <ButtonComponent
-          color={color}
-          colorFont={colorFont}
-          colorHover={colorHover}
-          type="submit"
-        >
+        <ButtonComponent color={color} colorFont={colorFont} type="submit">
           <span>{title}</span>
         </ButtonComponent>
         {children}

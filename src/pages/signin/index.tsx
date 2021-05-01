@@ -129,7 +129,6 @@ const SignIn: React.FC = () => {
                           title="Continuar"
                           color="#E9C98F"
                           colorFont="#F8f8f8"
-                          colorHover="PaleGoldenrod"
                           type="button"
                         />
                       </div>

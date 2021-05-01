@@ -1,0 +1,97 @@
+{
+  "slides": [
+    {
+      "link": "series",
+      "img": "https://live.staticflickr.com/65535/51145470856_1b49d3db83_o.png"
+    },
+    {
+      "link": "series",
+      "img": "https://live.staticflickr.com/65535/51144101152_86cab42904_h.jpg"
+    },
+    {
+      "img": "https://live.staticflickr.com/65535/51145565324_caabc0d8cb_h.jpg"
+    },
+    {
+      "img": "https://live.staticflickr.com/65535/51145008843_d381b391b9_h.jpg"
+    }
+  ],
+  "imagesCardInterface":[
+    {
+      "id":1,
+      "category":"Poltronas",
+      "title":"Poltronas",
+      "link": "series",
+      "image": "https://live.staticflickr.com/65535/51148598255_3235051d35_o.png"
+    },
+    {
+      "id":2,
+      "category":"Cadeiras",
+      "title":"Cadeiras",
+      "link": "series",
+      "image": "https://live.staticflickr.com/65535/51146803467_c5a485cc33_o.png"
+    },
+    {
+      "id":3,
+      "category":"Mesas",
+      "title":"Mesas",
+      "link": "series",
+      "image": "https://live.staticflickr.com/65535/51148271094_1176b2ef15_o.png"
+    },
+    {
+      "id":4,
+      "category":"Sofás",
+      "title":"Sofás",
+      "link": "series",
+      "image": "https://live.staticflickr.com/65535/51147479276_7edf451732_o.png"
+    },
+    {
+      "id":5,
+      "category":"Guarda-Roupas",
+      "title":"Guarda-Roupas",
+      "link": "series",
+      "image": "https://live.staticflickr.com/65535/51147718853_072319b8d7_o.png"
+    }
+  ],
+  "imagesCardMostViewedProductsInterface":[
+    {
+      "id":1,
+      "category":"Mesas",
+      "link": "series",
+      "title":"Mesa De Jantar",
+      "price":"100,99",
+      "image": "https://live.staticflickr.com/65535/51148219190_e4a4035751_o.png"
+    },
+    {
+      "id":2,
+      "category":"Poltronas",
+      "link": "series",
+      "title":"Poltrona Cinza",
+      "price":"100,99",
+      "image": "https://live.staticflickr.com/65535/51147261678_9b693b9525_o.png"
+    },
+    {
+      "id":3,
+      "category":"Cadeira",
+      "link": "series",
+      "title":"Cadeira",
+      "price":"100,99",
+      "image": "https://live.staticflickr.com/65535/51147035986_2b3fe94b50_o.png"
+    },
+    {
+      "id":4,
+      "category":"Sofás",
+      "link": "series",
+      "title":"Sofá Azul",
+      "price":"100,99",
+      "image": "https://live.staticflickr.com/65535/51147336118_755db7133b_o.png"
+    },
+    {
+      "id":5,
+      "category":"Guarda-roupas",
+      "link": "series",
+      "title":"Guarda-Roupa",
+      "price":"100,99",
+      "image": "https://live.staticflickr.com/65535/51148219205_eeb41efab2_o.png"
+    }
+  ]
+}

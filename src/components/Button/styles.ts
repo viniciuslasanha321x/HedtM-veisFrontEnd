@@ -4,7 +4,6 @@ import { shade } from 'polished';
 interface ColorButton {
   color: string;
   colorFont: string;
-  colorHover: string;
 }
 
 export const ButtonComponent = styled.button<ColorButton>`
@@ -30,6 +29,6 @@ export const ButtonComponent = styled.button<ColorButton>`
   }
   :hover {
     transition: 300ms all;
-    background: ${props => props.colorHover};
+    background: ${props => shade(0.1, props.color)};
   }
 `;

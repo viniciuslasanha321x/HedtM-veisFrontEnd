@@ -18,6 +18,8 @@ export const Container = styled.div`
     box-shadow: 0px 30px 29px -25px rgba(0, 0, 0, 0.66);
     transition: 300ms all;
     margin-bottom: 32px;
+    width: 170px;
+    height: 170px;
 
     :hover {
       transition: 300ms all;

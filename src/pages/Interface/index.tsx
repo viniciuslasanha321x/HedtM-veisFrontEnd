@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 
 import Carousel from '../../components/Carousel';
 import CardCategories from '../../components/TypesCardCategories';
@@ -16,6 +15,7 @@ import {
   CardCategoriesContainer,
   CardMostViewedProducts,
 } from './_styles';
+import Header from '../../components/Header';
 
 const easing = [0.6, -0.5, 0.01, 0.99];
 
@@ -70,6 +70,7 @@ const Interface: React.FC = () => {
 
   return (
     <Container>
+      <Header />
       <Navbar>
         <Logo>
           <img src="/assets/LogoInterface.svg" alt="Image Logo" />

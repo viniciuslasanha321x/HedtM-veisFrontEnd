@@ -7,11 +7,11 @@ import Link from 'next/link';
 // Stylized components
 import { Container, ListImages, ItemList, Title } from './_styles';
 
-export type CardImages = { link: string; image?: string; title?: string };
+export type CardProps = { link: string; image?: string; title?: string };
 
 interface CardCategoriesProps {
   altImg?: string;
-  cardImageListing?: CardImages[];
+  cardImageListing?: CardProps[];
 }
 
 const CardCategories = ({
@@ -20,15 +20,15 @@ const CardCategories = ({
 }: PropsWithChildren<CardCategoriesProps>) => {
   return (
     <Container>
-      {cardImageListing.map((id, index) => {
+      {cardImageListing.map((product, index) => {
         return (
           <ListImages key={index}>
             <ItemList>
-              <Link href={`/${id.link}`} key={index}>
-                <img src={id.image} alt={altImg} />
+              <Link href={`/${product.link}`} key={index}>
+                <img src={product.image} alt={altImg} />
               </Link>
               <Title>
-                <span>{id.title}</span>
+                <span>{product.title}</span>
               </Title>
             </ItemList>
           </ListImages>

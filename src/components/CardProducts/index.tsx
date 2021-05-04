@@ -1,11 +1,14 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { PropsWithChildren, useState, memo } from 'react';
+import React, { PropsWithChildren, useState, memo, useEffect } from 'react';
 import Link from 'next/link';
 
-import ButtonCart from '../ButtonAddCart';
+import api from '../../services/api';
+import { formatPrice } from '../../util/format';
+import { useCart } from '../../hooks/useCart';
 import ButtonAddListFavorites from '../ButtonAddListFavorites';
 
 // Stylized components
@@ -15,41 +18,85 @@ import {
   ItemList,
   ContainerPrice,
   Title,
+  ButtonCart,
 } from './_styles';
 
-export type Slide = {
+export type CardProps = {
+  id?:number;
   link: string;
   image?: string;
   title?: string;
-  price?: string;
+  price?: number;
   discount?: string;
+  priceFormatted?: string;
 };
 
 interface CardCategoriesProps {
   altImg?: string;
-  cardImageListing?: Slide[];
+  cardImageListing?: CardProps[];
 }
 
 const CardMostViewedProducts = ({
   altImg,
-  cardImageListing,
 }: PropsWithChildren<CardCategoriesProps>) => {
+  const [isVisibleIconCheckedCart, setIsVisibleIconCheckedCart] = useState(
+    true,
+  );
+
+  const [products, setProducts] = useState<CardProps[]>([]);
+  const { addProduct } = useCart();
+
+  async function toggleButton() {
+    setIsVisibleIconCheckedCart(!isVisibleIconCheckedCart);
+  }
+
+  useEffect(() => {
+    async function loadProducts() {
+      const { data } = await api.get<CardProps[]>("/cardmostviewedproducts");
+
+      const productsFormatted: CardProps[] = data.map((product) => ({
+        ...product,
+        priceFormatted: formatPrice(product.price),
+      }));
+
+      setProducts(productsFormatted);
+    }
+
+    loadProducts();
+  }, []);
+
+  async function handleAddProduct(id: number) {
+    addProduct(id);
+  }
+
   return (
     <Container>
-      {cardImageListing.map((id, index) => {
+      {products.map((product, index) => {
         return (
           <ListImages key={index}>
             <ItemList>
-              <Link href={`/${id.link}`} key={index}>
-                <img src={id.image} alt={altImg} />
+              <Link href={`/${product.link}`} key={index}>
+                <img src={product.image} alt={altImg} />
               </Link>
+
               <Title>
-                <span>{id.title}</span>
+                <span>{product.title}</span>
+
                 <ContainerPrice>
                   <div className="column">
-                    <span className="price">R$ {id.price}</span>
-                    <span className="discountPrice">R$ {id.discount}</span>
-                    <ButtonCart />
+                    <span className="price">{product.priceFormatted}</span>
+                    <span className="discountPrice">R$ {product.discount}</span>
+
+                    <ButtonCart>
+                      <button type="button" onClick={toggleButton}{...() => handleAddProduct(product.id)}>
+                        {isVisibleIconCheckedCart ? (
+                          <img src="/assets/ShoppingCartIcon.svg" />
+                        ) : (
+                          <img src="/assets/ShoppingCardIconSelected.svg" />
+                        )}
+                      </button>
+                    </ButtonCart>
+
                     <ButtonAddListFavorites />
                   </div>
                 </ContainerPrice>

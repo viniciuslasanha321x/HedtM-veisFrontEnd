@@ -3,11 +3,12 @@
 import React, { createContext, useEffect, useState, ReactNode } from 'react';
 import api from '../../services/api';
 
-export type CardImages = {
+export type CardProps = {
+  id: number;
   link: string;
   img: string;
   title?: string;
-  price?: string;
+  price?: number;
   discount?: string;
 };
 
@@ -16,10 +17,10 @@ interface ContextProps {
 }
 
 interface Context {
-  slidesImagesCarousel: CardImages[];
-  cardProductsCategories: CardImages[];
-  cardProducts: CardImages[];
-  cardPromotions: CardImages[];
+  slidesImagesCarousel: CardProps[];
+  cardProductsCategories: CardProps[];
+  cardProducts: CardProps[];
+  cardPromotions: CardProps[];
 }
 
 export const CarouselContextDashboard = createContext<Context>({
@@ -32,32 +33,32 @@ export const CarouselContextDashboard = createContext<Context>({
 export function ContextCardsImagesProductsAndPromotions({
   children,
 }: ContextProps) {
-  const [slidesImagesCarousel, setSlidesImagesCarousel] = useState<
-    CardImages[]
-  >([]);
+  const [slidesImagesCarousel, setSlidesImagesCarousel] = useState<CardProps[]>(
+    [],
+  );
 
   const [cardProductsCategories, setCardProductsCategories] = useState<
-    CardImages[]
+    CardProps[]
   >([]);
 
-  const [cardProducts, setCardProducts] = useState<CardImages[]>([]);
+  const [cardProducts, setCardProducts] = useState<CardProps[]>([]);
 
-  const [cardPromotions, setCardPromotions] = useState<CardImages[]>([]);
+  const [cardPromotions, setCardPromotions] = useState<CardProps[]>([]);
 
   async function reloadInitialData() {
-    const { data: dataSlidesImagesCarousel } = await api.get<CardImages[]>(
+    const { data: dataSlidesImagesCarousel } = await api.get<CardProps[]>(
       'slides',
     );
 
     const { data: dataImagesCardProductsCategories } = await api.get<
-      CardImages[]
+      CardProps[]
     >('cardproducts');
 
-    const { data: dataCardProducts } = await api.get<CardImages[]>(
+    const { data: dataCardProducts } = await api.get<CardProps[]>(
       'cardmostviewedproducts',
     );
 
-    const { data: dataCardPromotions } = await api.get<CardImages[]>(
+    const { data: dataCardPromotions } = await api.get<CardProps[]>(
       'cardpromotions',
     );
 

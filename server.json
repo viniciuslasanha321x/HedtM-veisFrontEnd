@@ -59,14 +59,41 @@
       "image": "https://live.staticflickr.com/65535/51155258914_677b55f796_o.png"
     }
   ],
+    "stock": [
+      {
+        "id": 1,
+        "amount": 3
+      },
+      {
+        "id": 2,
+        "amount": 5
+      },
+      {
+        "id": 3,
+        "amount": 2
+      },
+      {
+        "id": 4,
+        "amount": 1
+      },
+      {
+        "id": 5,
+        "amount": 5
+      },
+      {
+        "id": 6,
+        "amount": 10
+      }
+    ],
+
   "cardmostviewedproducts":[
     {
       "id":1,
       "category":"Mesas",
       "link": "series",
       "title":"Mesa De Jantar",
-      "price":"740,90",
-      "discount":"980,99",
+      "price":"740.90",
+      "discount":"980.99",
       "image": "https://live.staticflickr.com/65535/51148219190_e4a4035751_o.png"
     },
     {
@@ -74,8 +101,8 @@
       "category":"Poltronas",
       "link": "series",
       "title":"Poltrona Cinza",
-      "price":"699,99",
-      "discount":"740,00",
+      "price":"699.99",
+      "discount":"740.00",
       "image": "https://live.staticflickr.com/65535/51147261678_9b693b9525_o.png"
     },
     {
@@ -83,8 +110,8 @@
       "category":"Cadeira",
       "link": "series",
       "title":"Cadeira",
-      "price":"50,99",
-      "discount":"70,99",
+      "price":"50.99",
+      "discount":"70.99",
       "image": "https://live.staticflickr.com/65535/51147035986_2b3fe94b50_o.png"
     },
     {
@@ -92,8 +119,8 @@
       "category":"Sofás",
       "link": "series",
       "title":"Sofá Azul",
-      "price":"800,00",
-      "discount":"1100,00",
+      "price":"800.00",
+      "discount":"1100.00",
       "image": "https://live.staticflickr.com/65535/51147336118_755db7133b_o.png"
     },
     {
@@ -101,8 +128,8 @@
       "category":"Guarda-roupas",
       "link": "series",
       "title":"Guarda-Roupa",
-      "price":"782,99",
-      "discount":"869,99",
+      "price":"782.99",
+      "discount":"869.99",
       "image": "https://live.staticflickr.com/65535/51148219205_eeb41efab2_o.png"
     },
     {
@@ -110,8 +137,8 @@
       "category":"Sofás",
       "link": "series",
       "title":"Sofá Preto",
-      "price":"627,99",
-      "discount":"729,99",
+      "price":"627.99",
+      "discount":"729.99",
       "image": "https://live.staticflickr.com/65535/51155519756_e09234c3b2_o.png"
     },
     {
@@ -119,8 +146,8 @@
       "category":"Cama",
       "link": "Camas",
       "title":"Cama Marrom Claro",
-      "price":"781,99",
-      "discount":"979,99",
+      "price":"781.99",
+      "discount":"979.99",
       "image": "https://live.staticflickr.com/65535/51155530421_b18aa0846b_o.png"
     }
   ],

@@ -5,21 +5,24 @@ import React from 'react';
 
 import CardProducts from '../../CardProducts';
 
-export type CardImages = {
+export type CardProps = {
   link: string;
   image: string;
   title: string;
   price?: string;
   discount?: string;
+  priceFormatted?: string;
 };
 
 interface PropsCardCategories {
   cardImageListing?: Array<{
+    id?: number;
     link: string;
     image?: string;
     title?: string;
     price?: string;
     discount?: string;
+    priceFormatted?: string;
   }>;
 }
 

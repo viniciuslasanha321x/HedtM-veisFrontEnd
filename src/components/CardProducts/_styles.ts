@@ -79,3 +79,13 @@ export const Title = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const ButtonCart = styled.div`
+  button {
+    width: 24px;
+    border-radius: 2px;
+    background: #91c260;
+    border: none;
+    height: 16px;
+  }
+`;

@@ -39,8 +39,6 @@ const fadeInUp = {
   },
 };
 
-export type CardImages = { link: string; img: string };
-
 const Interface: React.FC = () => {
   const {
     slidesImagesCarousel,

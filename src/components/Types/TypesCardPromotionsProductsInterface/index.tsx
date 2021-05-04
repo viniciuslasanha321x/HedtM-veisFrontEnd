@@ -5,7 +5,7 @@ import React from 'react';
 
 import CardPromotionsProductsInterface from '../../CardPromotionsProductsInterface';
 
-export type CardImages = { link: string; image: string };
+export type CardProps = { link: string; image: string };
 
 interface PropsCardCategories {
   cardImageListing?: Array<{

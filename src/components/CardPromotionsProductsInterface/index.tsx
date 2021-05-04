@@ -9,14 +9,14 @@ import Link from 'next/link';
 // Stylized components
 import { Container, ListImages, ItemList } from './_styles';
 
-export type Slide = {
+export type CardProps = {
   link: string;
   image?: string;
 };
 
 interface CardCategoriesProps {
   altImg?: string;
-  cardImageListing?: Slide[];
+  cardImageListing?: CardProps[];
 }
 
 const CardPromotionsProductsInterface = ({
@@ -25,12 +25,12 @@ const CardPromotionsProductsInterface = ({
 }: PropsWithChildren<CardCategoriesProps>) => {
   return (
     <Container>
-      {cardImageListing.map((id, index) => {
+      {cardImageListing.map((product, index) => {
         return (
           <ListImages key={index}>
             <ItemList>
-              <Link href={`/${id.link}`} key={index}>
-                <img src={id.image} alt={altImg} />
+              <Link href={`/${product.link}`} key={index}>
+                <img src={product.image} alt={altImg} />
               </Link>
             </ItemList>
           </ListImages>

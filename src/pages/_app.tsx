@@ -5,16 +5,19 @@ import { AnimatePresence } from 'framer-motion';
 import { ToastContainer } from 'react-toastify';
 import Global from '../styles/globalStyle';
 import CarouselContextDashboard from '../components/ContextCardsImagesProductsAndPromotions';
+import { CartProvider } from '../hooks/useCart';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <CarouselContextDashboard>
-      <AnimatePresence exitBeforeEnter>
-        <Component {...pageProps} />
-        <Global />
-        <ToastContainer autoClose={3000} />
-      </AnimatePresence>
-    </CarouselContextDashboard>
+    <CartProvider>
+      <CarouselContextDashboard>
+        <AnimatePresence exitBeforeEnter>
+          <Component {...pageProps} />
+          <Global />
+          <ToastContainer autoClose={3000} />
+        </AnimatePresence>
+      </CarouselContextDashboard>
+    </CartProvider>
   );
 }
 

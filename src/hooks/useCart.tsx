@@ -1,7 +1,13 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { createContext, ReactNode, useContext, useState } from 'react';
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { toast } from 'react-toastify';
 import api from '../services/api';
 import { Product, Stock } from '../types';
@@ -26,13 +32,13 @@ const CartContext = createContext<CartContextData>({} as CartContextData);
 
 export function CartProvider({ children }: CartProviderProps): JSX.Element {
   const [cart, setCart] = useState<Product[]>(() => {
-    const storagedCart = localStorage.getItem('@HedtMoveis:cart');
+    let storagedCart = '[]';
 
-    if (storagedCart) {
-      return JSON.parse(storagedCart);
+    if (typeof window !== 'undefined') {
+      storagedCart = localStorage.getItem('@HedtMoveis:cart') || '[]';
     }
 
-    return [];
+    return JSON.parse(storagedCart);
   });
 
   const addProduct = async (productId: number) => {
@@ -43,7 +49,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
       if (!productExists && stock.amount > 0) {
         const responseProducts = await api.get<Product>(
-          `products/${productId}`,
+          `cardmostviewedproducts/${productId}`,
         );
 
         setCart([...cart, { ...responseProducts.data, amount: 1 }]);
@@ -61,7 +67,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       } else {
         toast.error('Quantidade solicitada fora de estoque');
       }
-    } catch {
+    } catch (e) {
       toast.error('Erro na adição do produto');
     }
   };
@@ -105,8 +111,6 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         setCart(newCartList);
 
         localStorage.setItem('@HedtMoveis:cart', JSON.stringify(newCartList));
-      } else {
-        toast.error('Quantidade solicitada fora de estoque');
       }
     } catch {
       toast.error('Erro na alteração de quantidade do produto');

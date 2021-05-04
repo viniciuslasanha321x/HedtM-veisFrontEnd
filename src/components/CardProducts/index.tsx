@@ -43,11 +43,19 @@ const CardMostViewedProducts = ({
     true,
   );
 
+  const [isVisibleIconCheckedCartSelected, setIsVisibleIconCheckedCartSelected] = useState(
+    true,
+  );
+
   const [products, setProducts] = useState<CardProps[]>([]);
-  const { addProduct } = useCart();
+  const { addProduct, removeProduct } = useCart();
 
   async function toggleButton() {
     setIsVisibleIconCheckedCart(!isVisibleIconCheckedCart);
+  }
+
+  async function toggleButtonSelected() {
+    setIsVisibleIconCheckedCartSelected(!isVisibleIconCheckedCart);
   }
 
   useEffect(() => {
@@ -69,6 +77,10 @@ const CardMostViewedProducts = ({
     addProduct(id);
   }
 
+  async function handleRemoveProduct(id: number) {
+    removeProduct(id);
+  }
+
   return (
     <Container>
       {products.map((product, index) => {
@@ -88,7 +100,7 @@ const CardMostViewedProducts = ({
                     <span className="discountPrice">R$ {product.discount}</span>
 
                     <ButtonCart>
-                      <button type="button" onClick={toggleButton}{...() => handleAddProduct(product.id)}>
+                      <button type="button" onClick={() => {toggleButton(); toggleButtonSelected(); handleAddProduct(product.id); handleRemoveProduct(product.id)}}>
                         {isVisibleIconCheckedCart ? (
                           <img src="/assets/ShoppingCartIcon.svg" />
                         ) : (

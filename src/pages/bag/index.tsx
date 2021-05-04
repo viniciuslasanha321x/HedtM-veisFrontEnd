@@ -2,7 +2,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-return-assign */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { useMemo } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import {
   MdDelete,
   MdAddCircleOutline,
@@ -14,6 +14,7 @@ import { formatPrice } from '../../util/format';
 import { Container, ProductTable, Total } from './_styles';
 
 interface Product {
+  [x: string]: ReactNode;
   id: number;
   title: string;
   price: number;

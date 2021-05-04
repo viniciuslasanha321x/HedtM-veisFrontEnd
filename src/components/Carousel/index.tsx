@@ -9,7 +9,6 @@ type CarouselProps = { slides: Slide[] };
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const Carousel = ({ slides }: PropsWithChildren<CarouselProps>) => {
-  console.log(slides);
   return (
     <>
       <SanCarousel

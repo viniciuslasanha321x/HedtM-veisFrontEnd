@@ -22,7 +22,7 @@ export const Container = styled.header`
   left: 0;
   width: 100%;
   height: 70px;
-  background: #f3f8ff;
+  background: #f1efef;
   z-index: 9999;
   border-top: 2px solid #ddd;
   display: flex;
@@ -90,7 +90,7 @@ export const Container = styled.header`
           font-size: 8px;
           right: 0;
           top: 8px;
-          padding: 3px 5px 0px 5px;
+          padding: 3px 7px 0px 7px;
           z-index: 100;
           font-weight: bold;
         }

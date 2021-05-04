@@ -1,12 +1,18 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { AnimatePresence } from 'framer-motion';
 import Global from '../styles/globalStyle';
+import CarouselContextDashboard from '../components/ContextCardsImagesProductsAndPromotions';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AnimatePresence exitBeforeEnter>
-      <Component {...pageProps} />
-      <Global />
-    </AnimatePresence>
+    <CarouselContextDashboard>
+      <AnimatePresence exitBeforeEnter>
+        <Component {...pageProps} />
+        <Global />
+      </AnimatePresence>
+    </CarouselContextDashboard>
   );
 }
 

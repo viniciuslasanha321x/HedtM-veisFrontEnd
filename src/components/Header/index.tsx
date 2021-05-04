@@ -16,7 +16,7 @@ const Header: React.FC = () => {
       <nav>
         <ul>
           <li>
-            <NavLink href="/Interface">
+            <NavLink href="/interface">
               <a>
                 <FaHome />
                 <span>Home</span>

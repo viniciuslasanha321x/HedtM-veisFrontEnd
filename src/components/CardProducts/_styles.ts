@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, 180px);
+  grid-template-columns: repeat(auto-fit, 200px);
   gap: 72px;
   margin-top: 64px;
   align-items: center;
@@ -19,8 +19,8 @@ export const Container = styled.div`
     }
   }
 
-  @media (max-width: 640px) {
-    grid-template-columns: repeat(auto-fit, 140px);
+  @media (max-width: 540px) {
+    grid-template-columns: repeat(auto-fit, 200px);
   }
 `;
 
@@ -51,11 +51,27 @@ export const ItemList = styled.li`
 export const ContainerPrice = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin-top: 30px;
 
+  .column {
+    display: flex;
+  }
+
+  .price {
+    color: #82c969;
+    font-size: 16px;
+  }
+
+  .discountPrice {
+    font-weight: 400;
+    font-size: 10px;
+    text-decoration: line-through;
+  }
+
   span {
-    margin-right: 8px;
+    margin-right: 4px;
   }
 `;
 

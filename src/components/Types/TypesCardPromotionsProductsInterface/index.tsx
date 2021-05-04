@@ -3,24 +3,25 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 
-import CardCategories from '../CardCategories';
+import CardPromotionsProductsInterface from '../../CardPromotionsProductsInterface';
 
-export type CardImages = { link: string; image: string; title: string };
+export type CardImages = { link: string; image: string };
 
 interface PropsCardCategories {
   cardImageListing?: Array<{
     link: string;
     image?: string;
-    title?: string;
   }>;
 }
 
-const TypesCardCategories = ({ cardImageListing }: PropsCardCategories) => {
+const TypesCardPromotionsProducts = ({
+  cardImageListing,
+}: PropsCardCategories) => {
   return (
     <>
-      <CardCategories cardImageListing={cardImageListing} />
+      <CardPromotionsProductsInterface cardImageListing={cardImageListing} />
     </>
   );
 };
 
-export default TypesCardCategories;
+export default TypesCardPromotionsProducts;

@@ -3,13 +3,14 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 
-import CardMostViewedProducts from '../CardMostViewedProducts';
+import CardProducts from '../../CardProducts';
 
 export type CardImages = {
   link: string;
   image: string;
   title: string;
   price?: string;
+  discount?: string;
 };
 
 interface PropsCardCategories {
@@ -18,15 +19,16 @@ interface PropsCardCategories {
     image?: string;
     title?: string;
     price?: string;
+    discount?: string;
   }>;
 }
 
-const TypesCardViewedProducts = ({ cardImageListing }: PropsCardCategories) => {
+const TypesCardProducts = ({ cardImageListing }: PropsCardCategories) => {
   return (
     <>
-      <CardMostViewedProducts cardImageListing={cardImageListing} />
+      <CardProducts cardImageListing={cardImageListing} />
     </>
   );
 };
 
-export default TypesCardViewedProducts;
+export default TypesCardProducts;

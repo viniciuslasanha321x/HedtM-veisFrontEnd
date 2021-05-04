@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { PropsWithChildren, useState, memo } from 'react';
+
 import Link from 'next/link';
 
 // Stylized components

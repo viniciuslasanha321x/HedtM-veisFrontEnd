@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, 170px);
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, 350px);
+  gap: 27px;
   margin: 64px 24px 0 24px;
   align-items: center;
   place-content: center;
@@ -14,12 +14,9 @@ export const Container = styled.div`
     justify-content: center;
     align-self: center;
     flex-direction: column;
-    border-radius: 50%;
-    box-shadow: 0px 30px 29px -25px rgba(0, 0, 0, 0.66);
-    transition: 300ms all;
     margin-bottom: 32px;
-    width: 170px;
-    height: 170px;
+    transition: 300ms all;
+    width: 80%;
 
     :hover {
       transition: 300ms all;

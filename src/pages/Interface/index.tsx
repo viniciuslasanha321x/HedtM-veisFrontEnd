@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useContext, useEffect, useState } from 'react';
+import Image from 'next/image';
 
 import Carousel from '../../components/Carousel';
-import CardCategories from '../../components/TypesCardCategories';
-import CardViewedProducts from '../../components/TypesCardViewedProducts';
-
-import api from '../../services/api';
+import CardCategories from '../../components/Types/TypesCardCategories';
+import CardProducts from '../../components/Types/TypesCardProducts';
+import CardPromotionsProductsInterface from '../../components/Types/TypesCardPromotionsProductsInterface';
+import { CarouselContextDashboard } from '../../components/ContextCardsImagesProductsAndPromotions';
 
 import {
   Container,
@@ -14,6 +17,7 @@ import {
   CarouselContainer,
   CardCategoriesContainer,
   CardMostViewedProducts,
+  CardPromotions,
 } from './_styles';
 import Header from '../../components/Header';
 
@@ -38,63 +42,65 @@ const fadeInUp = {
 export type CardImages = { link: string; img: string };
 
 const Interface: React.FC = () => {
-  const [slides, setSlides] = useState<CardImages[]>([]);
-  const [
-    listImagesCardCategoriesInterface,
-    setListImagesCardCategoriesInterface,
-  ] = useState<CardImages[]>([]);
-  const [
-    listImagesCardMostViewdInterface,
-    setListImagesCardMostViewdInterface,
-  ] = useState<CardImages[]>([]);
+  const {
+    slidesImagesCarousel,
+    cardProductsCategories,
+    cardProducts,
+    cardPromotions,
+  } = useContext(CarouselContextDashboard);
 
-  useEffect(() => {
-    (async function loadSlides() {
-      const { data: slidesCarousel } = await api.get<CardImages[]>('slides');
-      // eslint-disable-next-line no-unused-expressions
-      ('slides');
+  const [isScrolled, setIsScrolled] = useState(false);
 
-      const { data: imagesCardInterface } = await api.get<CardImages[]>(
-        'imagesCardInterface',
-      );
+  useEffect(function onFirstMount() {
+    const handleChangeHeaderBackground = () => {
+      if (window.scrollY >= 20) {
+        return setIsScrolled(true);
+      }
+      return setIsScrolled(false);
+    };
 
-      const { data: imagesCardMostViewdInterface } = await api.get<
-        CardImages[]
-      >('imagesCardMostViewedProductsInterface');
-
-      setSlides(slidesCarousel);
-      setListImagesCardCategoriesInterface(imagesCardInterface);
-      setListImagesCardMostViewdInterface(imagesCardMostViewdInterface);
-    })();
+    window.addEventListener('scroll', handleChangeHeaderBackground);
   }, []);
 
   return (
     <Container>
       <Header />
-      <Navbar>
+      <Navbar isScrolled={isScrolled}>
         <Logo>
-          <img src="/assets/LogoInterface.svg" alt="Image Logo" />
+          <Image
+            src="/assets/LogoInterface.svg"
+            alt="Image Logo"
+            width={250}
+            height={72}
+          />
           <Input>
             <input placeholder="Search Product" />
             <button type="submit">
-              <img src="/assets/IconSearch.svg" alt="search icon" />
+              <Image
+                src="/assets/IconSearch.svg"
+                alt="search icon"
+                width={14}
+                height={16}
+              />
             </button>
           </Input>
         </Logo>
       </Navbar>
       <CarouselContainer>
-        <Carousel slides={slides} />
+        <Carousel slides={slidesImagesCarousel} />
       </CarouselContainer>
       <CardCategoriesContainer>
         <h1>Categorias</h1>
-        <CardCategories cardImageListing={listImagesCardCategoriesInterface} />
+        <CardCategories cardImageListing={cardProductsCategories} />
       </CardCategoriesContainer>
       <CardMostViewedProducts>
-        <h1>Produtos Mais Vistos</h1>
-        <CardViewedProducts
-          cardImageListing={listImagesCardMostViewdInterface}
-        />
+        <h2>Produtos Mais Vistos</h2>
+        <CardProducts cardImageListing={cardProducts} />
       </CardMostViewedProducts>
+      <CardPromotions>
+        <h3>Promoções</h3>
+        <CardPromotionsProductsInterface cardImageListing={cardPromotions} />
+      </CardPromotions>
     </Container>
   );
 };

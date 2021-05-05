@@ -15,161 +15,165 @@
       "img": "https://live.staticflickr.com/65535/51145008843_d381b391b9_h.jpg"
     }
   ],
-  "cardproducts":[
+  "cardproducts": [
     {
-      "id":1,
-      "category":"Poltronas",
-      "title":"Poltronas",
+      "id": 1,
+      "category": "Poltronas",
+      "title": "Poltronas",
       "link": "series",
       "image": "https://live.staticflickr.com/65535/51148598255_3235051d35_o.png"
     },
     {
-      "id":2,
-      "category":"Cadeiras",
-      "title":"Cadeiras",
+      "id": 2,
+      "category": "Cadeiras",
+      "title": "Cadeiras",
       "link": "series",
       "image": "https://live.staticflickr.com/65535/51146803467_c5a485cc33_o.png"
     },
     {
-      "id":3,
-      "category":"Mesas",
-      "title":"Mesas",
+      "id": 3,
+      "category": "Mesas",
+      "title": "Mesas",
       "link": "series",
       "image": "https://live.staticflickr.com/65535/51148271094_1176b2ef15_o.png"
     },
     {
-      "id":4,
-      "category":"Sofás",
-      "title":"Sofás",
+      "id": 4,
+      "category": "Sofás",
+      "title": "Sofás",
       "link": "series",
       "image": "https://live.staticflickr.com/65535/51147479276_7edf451732_o.png"
     },
     {
-      "id":5,
-      "category":"Guarda-Roupas",
-      "title":"Guarda-Roupas",
+      "id": 5,
+      "category": "Guarda-Roupas",
+      "title": "Guarda-Roupas",
       "link": "series",
       "image": "https://live.staticflickr.com/65535/51147718853_072319b8d7_o.png"
     },
     {
-      "id":6,
-      "category":"Camas",
-      "title":"Camas",
+      "id": 6,
+      "category": "Camas",
+      "title": "Camas",
       "link": "series",
       "image": "https://live.staticflickr.com/65535/51155258914_677b55f796_o.png"
     }
   ],
-    "stock": [
-      {
-        "id": 1,
-        "amount": 3
-      },
-      {
-        "id": 2,
-        "amount": 5
-      },
-      {
-        "id": 3,
-        "amount": 2
-      },
-      {
-        "id": 4,
-        "amount": 1
-      },
-      {
-        "id": 5,
-        "amount": 5
-      },
-      {
-        "id": 6,
-        "amount": 10
-      }
-    ],
-
-  "cardmostviewedproducts":[
+  "stock": [
     {
-      "id":1,
-      "category":"Mesas",
+      "id": 1,
+      "amount": 3
+    },
+    {
+      "id": 2,
+      "amount": 5
+    },
+    {
+      "id": 3,
+      "amount": 2
+    },
+    {
+      "id": 4,
+      "amount": 1
+    },
+    {
+      "id": 5,
+      "amount": 5
+    },
+    {
+      "id": 6,
+      "amount": 10
+    },
+    {
+      "id": 7,
+      "amount": 10
+    }
+  ],
+
+  "cardmostviewedproducts": [
+    {
+      "id": 1,
+      "category": "Mesas",
       "link": "series",
-      "title":"Mesa De Jantar",
-      "price":"740.90",
-      "discount":"980.99",
+      "title": "Mesa De Jantar",
+      "price": "740.90",
+      "discount": "980.99",
       "image": "https://live.staticflickr.com/65535/51148219190_e4a4035751_o.png"
     },
     {
-      "id":2,
-      "category":"Poltronas",
+      "id": 2,
+      "category": "Poltronas",
       "link": "series",
-      "title":"Poltrona Cinza",
-      "price":"699.99",
-      "discount":"740.00",
+      "title": "Poltrona Cinza",
+      "price": "699.99",
+      "discount": "740.00",
       "image": "https://live.staticflickr.com/65535/51147261678_9b693b9525_o.png"
     },
     {
-      "id":3,
-      "category":"Cadeira",
+      "id": 3,
+      "category": "Cadeira",
       "link": "series",
-      "title":"Cadeira",
-      "price":"50.99",
-      "discount":"70.99",
+      "title": "Cadeira",
+      "price": "50.99",
+      "discount": "70.99",
       "image": "https://live.staticflickr.com/65535/51147035986_2b3fe94b50_o.png"
     },
     {
-      "id":4,
-      "category":"Sofás",
+      "id": 4,
+      "category": "Sofás",
       "link": "series",
-      "title":"Sofá Azul",
-      "price":"800.00",
-      "discount":"1100.00",
+      "title": "Sofá Azul",
+      "price": "800.00",
+      "discount": "1100.00",
       "image": "https://live.staticflickr.com/65535/51147336118_755db7133b_o.png"
     },
     {
-      "id":5,
-      "category":"Guarda-roupas",
+      "id": 5,
+      "category": "Guarda-roupas",
       "link": "series",
-      "title":"Guarda-Roupa",
-      "price":"782.99",
-      "discount":"869.99",
+      "title": "Guarda-Roupa",
+      "price": "782.99",
+      "discount": "869.99",
       "image": "https://live.staticflickr.com/65535/51148219205_eeb41efab2_o.png"
     },
     {
-      "id":6,
-      "category":"Sofás",
+      "id": 6,
+      "category": "Sofás",
       "link": "series",
-      "title":"Sofá Preto",
-      "price":"627.99",
-      "discount":"729.99",
+      "title": "Sofá Preto",
+      "price": "627.99",
+      "discount": "729.99",
       "image": "https://live.staticflickr.com/65535/51155519756_e09234c3b2_o.png"
     },
     {
-      "id":5,
-      "category":"Cama",
+      "id": 7,
+      "category": "Cama",
       "link": "Camas",
-      "title":"Cama Marrom Claro",
-      "price":"781.99",
-      "discount":"979.99",
+      "title": "Cama Marrom Claro",
+      "price": "781.99",
+      "discount": "979.99",
       "image": "https://live.staticflickr.com/65535/51155530421_b18aa0846b_o.png"
     }
   ],
-  "cardpromotions":[
+  "cardpromotions": [
     {
-      "id":1,
-      "category":"Poltronas",
-      "title":"Poltronas Com 20% Off",
+      "id": 1,
+      "category": "Poltronas",
+      "title": "Poltronas Com 20% Off",
       "link": "series",
       "image": "https://live.staticflickr.com/65535/51154461765_dd8b633b3e_o.png"
     },
     {
-      "id":2,
-      "category":"Mesas",
-      "title":"Mesas Com 70% Off",
+      "id": 2,
+      "category": "Mesas",
+      "title": "Mesas Com 70% Off",
       "link": "series",
       "image": "https://live.staticflickr.com/65535/51152686272_abbabefc50_o.png"
     },
     {
-      "id":3,
-      "category":"Cadeiras",
-      "title":"Sofás Com 40% Off",
+      "id": 3,
+      "category": "Cadeiras",
+      "title": "Sofás Com 40% Off",
       "link": "series",
       "image": "https://live.staticflickr.com/65535/51153246201_2ea1ff329e_o.png"
     }

@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
         <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} />
           <Global />
-          <ToastContainer autoClose={3000} />
+          <ToastContainer autoClose={3000} className="toast-container" />
         </AnimatePresence>
       </CarouselContextDashboard>
     </CartProvider>

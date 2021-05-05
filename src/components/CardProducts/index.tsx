@@ -22,7 +22,7 @@ import {
 } from './_styles';
 
 export type CardProps = {
-  id?:number;
+  id?: number;
   link: string;
   image?: string;
   title?: string;
@@ -43,26 +43,19 @@ const CardMostViewedProducts = ({
     true,
   );
 
-  const [isVisibleIconCheckedCartSelected, setIsVisibleIconCheckedCartSelected] = useState(
-    true,
-  );
+  const [
+    isVisibleIconCheckedCartSelected,
+    setIsVisibleIconCheckedCartSelected,
+  ] = useState(true);
 
   const [products, setProducts] = useState<CardProps[]>([]);
-  const { addProduct, removeProduct } = useCart();
-
-  async function toggleButton() {
-    setIsVisibleIconCheckedCart(!isVisibleIconCheckedCart);
-  }
-
-  async function toggleButtonSelected() {
-    setIsVisibleIconCheckedCartSelected(!isVisibleIconCheckedCart);
-  }
+  const { addProduct, removeProduct, cart } = useCart();
 
   useEffect(() => {
     async function loadProducts() {
-      const { data } = await api.get<CardProps[]>("/cardmostviewedproducts");
+      const { data } = await api.get<CardProps[]>('/cardmostviewedproducts');
 
-      const productsFormatted: CardProps[] = data.map((product) => ({
+      const productsFormatted: CardProps[] = data.map(product => ({
         ...product,
         priceFormatted: formatPrice(product.price),
       }));
@@ -73,12 +66,19 @@ const CardMostViewedProducts = ({
     loadProducts();
   }, []);
 
-  async function handleAddProduct(id: number) {
-    addProduct(id);
-  }
+  const verifyItemCart = (id: number): boolean => {
+    const result = cart.filter(item => item.id === id);
 
-  async function handleRemoveProduct(id: number) {
-    removeProduct(id);
+    return result.length > 0;
+  };
+
+  function handleProduct(id: number) {
+    console.log(id);
+    if (verifyItemCart(id)) {
+      removeProduct(id);
+      return;
+    }
+    addProduct(id);
   }
 
   return (
@@ -100,11 +100,14 @@ const CardMostViewedProducts = ({
                     <span className="discountPrice">R$ {product.discount}</span>
 
                     <ButtonCart>
-                      <button type="button" onClick={() => {toggleButton(); toggleButtonSelected(); handleAddProduct(product.id); handleRemoveProduct(product.id)}}>
-                        {isVisibleIconCheckedCart ? (
-                          <img src="/assets/ShoppingCartIcon.svg" />
-                        ) : (
+                      <button
+                        type="button"
+                        onClick={() => handleProduct(product.id)}
+                      >
+                        {verifyItemCart(product.id) ? (
                           <img src="/assets/ShoppingCardIconSelected.svg" />
+                        ) : (
+                          <img src="/assets/ShoppingCartIcon.svg" />
                         )}
                       </button>
                     </ButtonCart>

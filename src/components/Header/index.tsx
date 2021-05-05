@@ -9,8 +9,10 @@ import {
 
 import { Container } from './styles';
 import NavLink from '../NavLink';
+import { useCart } from '../../hooks/useCart';
 
 const Header: React.FC = () => {
+  const { cart } = useCart();
   return (
     <Container>
       <nav>
@@ -25,7 +27,7 @@ const Header: React.FC = () => {
           </li>
 
           <li className="bag">
-            <div>1</div>
+            {cart.length > 0 && <div>{cart.length}</div>}
             <NavLink href="/bag">
               <a>
                 <FaShoppingBag />

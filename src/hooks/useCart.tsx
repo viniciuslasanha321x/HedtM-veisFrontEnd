@@ -52,12 +52,14 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
           `cardmostviewedproducts/${productId}`,
         );
 
-        setCart([...cart, { ...responseProducts.data, amount: 1 }]);
+        setCart(status => [...status, { ...responseProducts.data, amount: 1 }]);
 
         localStorage.setItem(
           '@HedtMoveis:cart',
           JSON.stringify([...cart, { ...responseProducts.data, amount: 1 }]),
         );
+
+        toast.success('Produto adicionado com sucesso.');
       } else if (productExists && productExists.amount <= stock.amount) {
         const amount = productExists.amount + 1;
         updateProductAmount({
@@ -78,6 +80,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     if (!productExists) {
       return toast.error('Erro na remoção do produto');
     }
+
     if (productExists) {
       const productsWithoutProductId = cart.filter(
         product => product.id !== productId,
@@ -90,6 +93,8 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         JSON.stringify(productsWithoutProductId),
       );
     }
+
+    toast.warning('Produto removido com sucesso.');
   };
 
   const updateProductAmount = async ({

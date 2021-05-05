@@ -105,9 +105,6 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       const { data } = await api.get(`stock/${productId}`);
       const stock: Stock = data;
 
-      if (amount < 1) {
-        return;
-      }
       if (amount <= stock.amount) {
         const newCartList = cart.map(product =>
           product.id === productId ? { ...product, amount } : product,
@@ -116,6 +113,8 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         setCart(newCartList);
 
         localStorage.setItem('@HedtMoveis:cart', JSON.stringify(newCartList));
+      } else {
+        toast.warning('Limite Atingido.');
       }
     } catch {
       toast.error('Erro na alteração de quantidade do produto');

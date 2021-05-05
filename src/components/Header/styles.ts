@@ -83,6 +83,7 @@ export const Container = styled.header`
           position: absolute;
           background: #c72525;
           border-radius: 50%;
+          pointer-events:none
           display: flex;
           justify-content: center;
           align-items: center;
@@ -90,7 +91,7 @@ export const Container = styled.header`
           font-size: 8px;
           right: 0;
           top: 8px;
-          padding: 3px 7px 0px 7px;
+          padding: 3px 6px 0px 6px;
           z-index: 100;
           font-weight: bold;
         }

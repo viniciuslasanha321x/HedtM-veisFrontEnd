@@ -19,7 +19,7 @@ export const Navbar = styled.nav<HeaderProps>`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transition: all 300ms;
+  transition: all 100ms;
   background: ${props => (props.isScrolled ? '#E9E7E7' : 'transparent')};
   box-shadow: 0px 30px 29px -25px ${props => (props.isScrolled ? ' rgba(0, 0, 0, 0.24)' : 'transparent')};
 `;

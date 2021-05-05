@@ -51,7 +51,7 @@ const Interface: React.FC = () => {
 
   useEffect(function onFirstMount() {
     const handleChangeHeaderBackground = () => {
-      if (window.scrollY >= 20) {
+      if (window.scrollY >= 10) {
         return setIsScrolled(true);
       }
       return setIsScrolled(false);

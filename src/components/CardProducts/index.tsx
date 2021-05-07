@@ -39,14 +39,6 @@ interface CardCategoriesProps {
 const CardMostViewedProducts = ({
   altImg,
 }: PropsWithChildren<CardCategoriesProps>) => {
-  const [isVisibleIconCheckedCart, setIsVisibleIconCheckedCart] = useState(
-    true,
-  );
-
-  const [
-    isVisibleIconCheckedCartSelected,
-    setIsVisibleIconCheckedCartSelected,
-  ] = useState(true);
 
   const [products, setProducts] = useState<CardProps[]>([]);
   const { addProduct, removeProduct, cart } = useCart();
@@ -73,7 +65,6 @@ const CardMostViewedProducts = ({
   };
 
   function handleProduct(id: number) {
-    console.log(id);
     if (verifyItemCart(id)) {
       removeProduct(id);
       return;

@@ -1,19 +1,16 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react';
-import Image from 'next/image';
 
 import Carousel from '../../components/Carousel';
 import CardCategories from '../../components/Types/TypesCardCategories';
 import CardProducts from '../../components/Types/TypesCardProducts';
+import SearchNavbar from '../../components/SearchNavbar';
 import CardPromotionsProductsInterface from '../../components/Types/TypesCardPromotionsProductsInterface';
 import { CarouselContextDashboard } from '../../components/ContextCardsImagesProductsAndPromotions';
 
 import {
   Container,
-  Navbar,
-  Logo,
-  Input,
   CarouselContainer,
   CardCategoriesContainer,
   CardMostViewedProducts,
@@ -47,43 +44,10 @@ const Interface: React.FC = () => {
     cardPromotions,
   } = useContext(CarouselContextDashboard);
 
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(function onFirstMount() {
-    const handleChangeHeaderBackground = () => {
-      if (window.scrollY >= 10) {
-        return setIsScrolled(true);
-      }
-      return setIsScrolled(false);
-    };
-
-    window.addEventListener('scroll', handleChangeHeaderBackground);
-  }, []);
-
   return (
     <Container>
       <Header />
-      <Navbar isScrolled={isScrolled}>
-        <Logo>
-          <Image
-            src="/assets/LogoInterface.svg"
-            alt="Image Logo"
-            width={250}
-            height={72}
-          />
-          <Input>
-            <input placeholder="Search Product" />
-            <button type="submit">
-              <Image
-                src="/assets/IconSearch.svg"
-                alt="search icon"
-                width={14}
-                height={16}
-              />
-            </button>
-          </Input>
-        </Logo>
-      </Navbar>
+      <SearchNavbar />
       <CarouselContainer>
         <Carousel slides={slidesImagesCarousel} />
       </CarouselContainer>

@@ -1,4 +1,7 @@
+import { ReactNode } from 'react';
+
 export interface Product {
+  [x: string]: ReactNode;
   id: number;
   title: string;
   price: number;
@@ -6,7 +9,7 @@ export interface Product {
   amount: number;
 }
 
-export interface Stock {
+export interface Stock extends Product {
   id: number;
   amount: number;
 }

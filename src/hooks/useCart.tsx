@@ -24,6 +24,8 @@ interface UpdateProductAmount {
 interface CartContextData {
   cart: Product[];
   addProduct: (productId: number) => void;
+  clearCart: (productId: number) => void;
+  handleCheckout: (productId: number) => void;
   removeProduct: (productId: number) => void;
   updateProductAmount: ({ productId, amount }: UpdateProductAmount) => void;
 }
@@ -31,15 +33,48 @@ interface CartContextData {
 const CartContext = createContext<CartContextData>({} as CartContextData);
 
 export function CartProvider({ children }: CartProviderProps): JSX.Element {
-  const [cart, setCart] = useState<Product[]>(() => {
-    let storagedCart = '[]';
+  const [cart, setCart] = useState<Product[]>([]);
 
-    if (typeof window !== 'undefined') {
-      storagedCart = localStorage.getItem('@HedtMoveis:cart') || '[]';
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
     }
 
-    return JSON.parse(storagedCart);
-  });
+    const storagedCart = localStorage.getItem('@HedtMoveis:cart');
+
+    if (storagedCart) {
+      return setCart(JSON.parse(storagedCart));
+    }
+  }, []);
+
+  const clearCart = () => {
+    const storagedCart = window.localStorage.getItem('@HedtMoveis:cart');
+
+    if (storagedCart) {
+      window.localStorage.removeItem('@HedtMoveis:cart');
+      setCart([]);
+    }
+  };
+
+  const handleCheckout = () => {
+    const orders = localStorage.getItem('@HedtMoveis:order');
+
+    if (orders) {
+      const ordersParse = JSON.parse(orders);
+
+      localStorage.setItem(
+        '@HedtMoveis:order',
+        JSON.stringify([...ordersParse, ...cart]),
+      );
+    } else {
+      localStorage.setItem('@HedtMoveis:order', JSON.stringify(cart));
+    }
+
+    // endpoint rota backend que salva as orders metodo:post
+
+    clearCart();
+    setCart([]);
+  };
 
   const addProduct = async (productId: number) => {
     try {
@@ -54,10 +89,11 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
         setCart(status => [...status, { ...responseProducts.data, amount: 1 }]);
 
-        localStorage.setItem(
-          '@HedtMoveis:cart',
-          JSON.stringify([...cart, { ...responseProducts.data, amount: 1 }]),
-        );
+        const teste = [...cart, { ...responseProducts.data, amount: 1 }];
+
+        console.log('teste2', teste);
+
+        localStorage.setItem('@HedtMoveis:cart', JSON.stringify(teste));
 
         toast.success('Produto adicionado com sucesso.');
       } else if (productExists && productExists.amount <= stock.amount) {
@@ -75,24 +111,19 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
   };
 
   const removeProduct = (productId: number) => {
-    const productExists = cart.find(product => product.id === productId);
+    const productIndex = cart.findIndex(product => product.id === productId);
 
-    if (!productExists) {
+    if (productIndex < 0) {
       return toast.error('Erro na remoção do produto');
     }
 
-    if (productExists) {
-      const productsWithoutProductId = cart.filter(
-        product => product.id !== productId,
-      );
+    const copyCart = cart;
 
-      setCart(productsWithoutProductId);
+    copyCart.splice(productIndex, 1);
 
-      localStorage.setItem(
-        '@HedtMoveis:cart',
-        JSON.stringify(productsWithoutProductId),
-      );
-    }
+    setCart([...copyCart]);
+
+    localStorage.setItem('@HedtMoveis:cart', JSON.stringify(copyCart));
 
     toast.warning('Produto removido com sucesso.');
   };
@@ -123,7 +154,14 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
   return (
     <CartContext.Provider
-      value={{ cart, addProduct, removeProduct, updateProductAmount }}
+      value={{
+        cart,
+        addProduct,
+        removeProduct,
+        updateProductAmount,
+        clearCart,
+        handleCheckout,
+      }}
     >
       {children}
     </CartContext.Provider>

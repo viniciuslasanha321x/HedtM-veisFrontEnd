@@ -11,8 +11,11 @@ import {
   MdRemoveCircleOutline,
 } from 'react-icons/md';
 
+import SearchNavbar from '../../components/SearchNavbar';
+import Header from '../../components/Header';
 import { useCart } from '../../hooks/useCart';
 import { formatPrice } from '../../util/format';
+
 import {
   Container,
   ContainerTable,
@@ -21,8 +24,15 @@ import {
   ProductTable,
   Total,
 } from './_styles';
-import Header from '../../components/Header';
 
+interface disableInformationsComponent {
+  disableButtonDecrement: boolean;
+  disableButtonIncrement: boolean;
+  removeTrash: boolean;
+  marginQuantity: string;
+  disableLogo: boolean;
+  disableButtonCheckout: boolean;
+}
 interface Product {
   [x: string]: ReactNode;
   id: number;
@@ -32,14 +42,15 @@ interface Product {
   amount: number;
 }
 
-const Cart = (): JSX.Element => {
+const Cart: React.FC<disableInformationsComponent> = ({
+  disableButtonDecrement = false,
+  disableButtonIncrement = false,
+  removeTrash = false,
+  marginQuantity = '',
+  disableLogo = false,
+  disableButtonCheckout = false,
+}) => {
   const { cart, removeProduct, updateProductAmount } = useCart();
-
-  // const cartFormatted = cart.map(product => ({
-  //   ...product,
-  //   priceFormatted: formatPrice(product.price),
-  //   total: formatPrice(product.price * product.amount),
-  // }));
 
   const cartFormatted = useMemo(() => {
     if (!!cart && !!cart.length) {
@@ -81,18 +92,9 @@ const Cart = (): JSX.Element => {
   return (
     <Container>
       <Header />
-      <Navbar>
-        <Logo>
-          <Image
-            src="/assets/LogoInterface.svg"
-            alt="Image Logo"
-            width={250}
-            height={72}
-          />
-        </Logo>
-      </Navbar>
+      {!disableLogo && <SearchNavbar />}
       <ContainerTable>
-        <ProductTable>
+        <ProductTable marginQuantity={marginQuantity}>
           <thead>
             <tr>
               <th aria-label="product image" />
@@ -113,37 +115,43 @@ const Cart = (): JSX.Element => {
                 </td>
                 <td>
                   <div>
-                    <button
-                      type="button"
-                      data-testid="decrement-product"
-                      disabled={product.amount <= 1}
-                      onClick={() => handleProductDecrement(product)}
-                    >
-                      <MdRemoveCircleOutline size={20} />
-                    </button>
+                    {!disableButtonDecrement && (
+                      <button
+                        type="button"
+                        data-testid="decrement-product"
+                        disabled={product.amount <= 1}
+                        onClick={() => handleProductDecrement(product)}
+                      >
+                        <MdRemoveCircleOutline size={20} />
+                      </button>
+                    )}
                     <input
                       type="text"
                       data-testid="product-amount"
                       readOnly
                       value={product.amount}
                     />
-                    <button
-                      type="button"
-                      data-testid="increment-product"
-                      onClick={() => handleProductIncrement(product)}
-                    >
-                      <MdAddCircleOutline size={20} />
-                    </button>
+                    {!disableButtonIncrement && (
+                      <button
+                        type="button"
+                        data-testid="increment-product"
+                        onClick={() => handleProductIncrement(product)}
+                      >
+                        <MdAddCircleOutline size={20} />
+                      </button>
+                    )}
                   </div>
                 </td>
                 <td>
-                  <button
-                    type="button"
-                    data-testid="remove-product"
-                    onClick={() => handleRemoveProduct(product.id)}
-                  >
-                    <MdDelete size={20} />
-                  </button>
+                  {!removeTrash && (
+                    <button
+                      type="button"
+                      data-testid="remove-product"
+                      onClick={() => handleRemoveProduct(product.id)}
+                    >
+                      <MdDelete size={20} />
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
@@ -152,7 +160,9 @@ const Cart = (): JSX.Element => {
 
         <Total>
           <footer>
-            <button type="button">Finalizar pedido</button>
+            {!disableButtonCheckout && (
+              <button type="button">Finalizar pedido</button>
+            )}
             <span>TOTAL</span>
             <strong>{total}</strong>
           </footer>

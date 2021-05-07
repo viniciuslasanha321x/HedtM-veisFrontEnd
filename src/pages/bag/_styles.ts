@@ -2,14 +2,16 @@ import styled from 'styled-components';
 
 import { shade } from 'polished';
 
+interface BagProps {
+  marginQuantity: string;
+}
+
 export const Container = styled.div``;
 
 export const ContainerTable = styled.div`
   width: 80%;
   margin: 0 auto;
-  background: #e8e8e8;
-  border-radius: 10px;
-  border: 2px solid #d3d3d3;
+
   padding-bottom: 72px;
   overflow-x: hidden;
 
@@ -24,20 +26,8 @@ export const ContainerTable = styled.div`
   }
 `;
 
-export const Navbar = styled.nav`
-  z-index: 999;
-  display: flex;
-  width: 100%;
-  height: 150px;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  transition: all 100ms;
-`;
-
-export const Logo = styled.div``;
-
-export const ProductTable = styled.table`
+export const ProductTable = styled.table<BagProps>`
+  margin-top: 200px;
   width: 100%;
 
   thead th {
@@ -77,6 +67,7 @@ export const ProductTable = styled.table`
   div {
     display: flex;
     align-items: center;
+    margin-left: ${props => props.marginQuantity};
 
     input {
       background: transparent;

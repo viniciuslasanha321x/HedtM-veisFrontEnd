@@ -89,3 +89,15 @@ export const ButtonCart = styled.div`
     height: 16px;
   }
 `;
+
+export const ButtonAddListFavorites = styled.div`
+  margin-left: 10px;
+
+  button {
+    width: 24px;
+    border-radius: 2px;
+    background: #f17474;
+    border: none;
+    height: 16px;
+  }
+`;

@@ -1,3 +1,4 @@
+import { shade } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div``;
@@ -20,7 +21,7 @@ export const ContainerTable = styled.div`
   }
 `;
 
-export const ProductTable = styled.table`
+export const ProductTable = styled.table<BagProps>`
   margin-top: 200px;
   width: 100%;
 
@@ -61,15 +62,45 @@ export const ProductTable = styled.table`
   div {
     display: flex;
     align-items: center;
+    margin-left: ${props => props.marginQuantity};
 
-    p {
+    input {
       background: transparent;
       border: none;
       color: #b0b0b0;
       font-weight: 600;
-      padding: 6px 0 0 60px;
+      padding: 6px;
       width: 20px;
-      font-size: 12px;
+    }
+  }
+
+  button {
+    background: none;
+    border: 0;
+    padding: 6px;
+
+    svg {
+      color: #b0b0b0;
+      transition: color 0.2s;
+    }
+
+    &:hover {
+      svg {
+        color: ${shade(0.2, '#b0b0b0')};
+      }
+    }
+
+    &:disabled {
+      svg {
+        color: ${shade(0.2, '#b0b0b0')};
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  @media (max-width: 650px) {
+    img {
+      min-width: 50%;
     }
   }
 `;

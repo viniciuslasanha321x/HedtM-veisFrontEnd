@@ -9,7 +9,7 @@ import Link from 'next/link';
 import api from '../../services/api';
 import { formatPrice } from '../../util/format';
 import { useCart } from '../../hooks/useCart';
-import ButtonAddListFavorites from '../ButtonAddListFavorites';
+import { useFavorite } from '../../hooks/useFavorite';
 
 // Stylized components
 import {
@@ -19,6 +19,7 @@ import {
   ContainerPrice,
   Title,
   ButtonCart,
+  ButtonAddListFavorites,
 } from './_styles';
 
 export type CardProps = {
@@ -42,6 +43,7 @@ const CardMostViewedProducts = ({
 
   const [products, setProducts] = useState<CardProps[]>([]);
   const { addProduct, removeProduct, cart } = useCart();
+  const { addProductFavorite, removeProductFavorite, favorite } = useFavorite();
 
   useEffect(() => {
     async function loadProducts() {
@@ -72,6 +74,20 @@ const CardMostViewedProducts = ({
     addProduct(id);
   }
 
+  const verifyItemFavorite = (id: number): boolean => {
+    const result = favorite.filter(item => item.id === id);
+
+    return result.length > 0;
+  };
+
+  function handleProductFavorite(id: number) {
+    if (verifyItemFavorite(id)) {
+      removeProductFavorite(id);
+      return;
+    }
+    addProductFavorite(id);
+  }
+
   return (
     <Container>
       {products.map((product, index) => {
@@ -88,7 +104,7 @@ const CardMostViewedProducts = ({
                 <ContainerPrice>
                   <div className="column">
                     <span className="price">{product.priceFormatted}</span>
-                    <span className="discountPrice">R$ {product.discount}</span>
+                    <span className="discountPrice">{product.discount}</span>
 
                     <ButtonCart>
                       <button
@@ -103,7 +119,18 @@ const CardMostViewedProducts = ({
                       </button>
                     </ButtonCart>
 
-                    <ButtonAddListFavorites />
+                    <ButtonAddListFavorites>
+                    <button
+                        type="button"
+                        onClick={() => handleProductFavorite(product.id)}
+                      >
+                        {verifyItemFavorite(product.id) ? (
+                         <img src="/assets/HeartFavoriteIconSelected.svg" />
+                         ) : (
+                           <img src="/assets/HeartFavoriteIcon.svg" />
+                        )}
+                      </button>
+                    </ButtonAddListFavorites>
                   </div>
                 </ContainerPrice>
               </Title>

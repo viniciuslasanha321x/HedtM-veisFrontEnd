@@ -125,12 +125,7 @@ const Cart: React.FC<disableInformationsComponent> = ({
                         <MdRemoveCircleOutline size={20} />
                       </button>
                     )}
-                    <input
-                      type="text"
-                      data-testid="product-amount"
-                      readOnly
-                      value={product.amount}
-                    />
+                    <p>{product.amount}</p>
                     {!disableButtonIncrement && (
                       <button
                         type="button"

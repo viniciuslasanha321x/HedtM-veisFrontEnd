@@ -16,7 +16,7 @@ import {
   useStripe,
 } from '@stripe/react-stripe-js';
 import { useCart } from '../../hooks/useCart';
-import { Container, ContainerTeste } from './_styles';
+import { Container, ContainerTeste, ButtonPay } from './_styles';
 
 const CARD_OPTIONS = {
   iconStyle: 'solid',
@@ -75,9 +75,9 @@ const Field = ({
   </div>
 );
 
-const SubmitButton = ({ processing, error, children, disabled }) => (
+const Submit = ({ processing, error, children, disabled }) => (
   <button
-    className={`SubmitButton ${error ? 'SubmitButton--error' : ''}`}
+    className={`Submit ${error ? 'Submit--error' : ''}`}
     type="submit"
     disabled={processing || disabled}
   >
@@ -217,15 +217,11 @@ const CheckoutForm = () => {
 
         {/* <Link href="/signup">
           <a className="signinMedia" href=""> */}
-        <button onClick={handleCheckout}>
-          <SubmitButton
-            processing={processing}
-            error={error}
-            disabled={!stripe}
-          >
+        <ButtonPay onClick={handleCheckout}>
+          <Submit processing={processing} error={error} disabled={!stripe}>
             Pagar
-          </SubmitButton>
-        </button>
+          </Submit>
+        </ButtonPay>
         {/* </a>
         </Link> */}
       </form>

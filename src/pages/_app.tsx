@@ -7,18 +7,21 @@ import Global from '../styles/globalStyle';
 import CarouselContextDashboard from '../components/ContextCardsImagesProductsAndPromotions';
 import { CartProvider } from '../hooks/useCart';
 import { OrderProvider } from '../hooks/useOrder';
+import { FavoriteProvider } from '../hooks/useFavorite';
 
 function MyApp({ Component, pageProps }) {
   return (
     <CartProvider>
       <OrderProvider>
-        <CarouselContextDashboard>
-          <AnimatePresence exitBeforeEnter>
-            <Component {...pageProps} />
-            <Global />
-            <ToastContainer autoClose={3000} className="toast-container" />
-          </AnimatePresence>
-        </CarouselContextDashboard>
+        <FavoriteProvider>
+          <CarouselContextDashboard>
+            <AnimatePresence exitBeforeEnter>
+              <Component {...pageProps} />
+              <Global />
+              <ToastContainer autoClose={3000} className="toast-container" />
+            </AnimatePresence>
+          </CarouselContextDashboard>
+        </FavoriteProvider>
       </OrderProvider>
     </CartProvider>
   );

@@ -44,6 +44,14 @@ const Cart: React.FC = () => {
       <SearchNavbar />
       <ContainerTable>
         <ProductTable>
+          <thead>
+            <tr>
+              <th aria-label="product image" />
+              <th>PRODUTO</th>
+              <th>QUANTIDADE</th>
+              <th aria-label="delete icon" />
+            </tr>
+          </thead>
           <tbody>
             {orderFormatted.map(product => (
               <tr data-testid="product" key={product.id}>
@@ -56,12 +64,7 @@ const Cart: React.FC = () => {
                 </td>
                 <td>
                   <div>
-                    <input
-                      type="text"
-                      data-testid="product-amount"
-                      readOnly
-                      value={product.amount}
-                    />
+                    <p>{product.amount}</p>
                   </div>
                 </td>
               </tr>

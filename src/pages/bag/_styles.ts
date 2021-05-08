@@ -69,13 +69,14 @@ export const ProductTable = styled.table<BagProps>`
     align-items: center;
     margin-left: ${props => props.marginQuantity};
 
-    input {
+    p {
       background: transparent;
       border: none;
       color: #b0b0b0;
-      font-weight: 600;
+      font-weight: 500;
       padding: 6px;
       width: 20px;
+      font-size: 13px;
     }
   }
 

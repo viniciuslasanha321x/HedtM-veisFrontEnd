@@ -10,7 +10,7 @@ import {
 } from 'react';
 import { toast } from 'react-toastify';
 import api from '../services/api';
-import { Product, Stock } from '../types';
+import { Product } from '../types';
 
 interface FavoriteProviderProps {
   children: ReactNode;
@@ -45,8 +45,8 @@ export function FavoriteProvider({
 
   const addProductFavorite = async (productId: number) => {
     try {
-      const { data } = await api.get(`stock/${productId}`);
-      const stock: Stock = data;
+      const { data } = await api.get(`cardmostviewedproducts/${productId}`);
+      const stock: Product = data;
       const productExists = favorite.find(product => product.id === productId);
 
       if (!productExists && stock.amount > 0) {

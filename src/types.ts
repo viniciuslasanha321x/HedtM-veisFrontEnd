@@ -8,8 +8,3 @@ export interface Product {
   image: string;
   amount: number;
 }
-
-export interface Stock extends Product {
-  id: number;
-  amount: number;
-}

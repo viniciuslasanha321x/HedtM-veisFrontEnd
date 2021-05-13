@@ -10,7 +10,7 @@ import {
 } from 'react';
 import { toast } from 'react-toastify';
 import api from '../services/api';
-import { Product, Stock } from '../types';
+import { Product } from '../types';
 
 interface CartProviderProps {
   children: ReactNode;
@@ -35,16 +35,22 @@ const CartContext = createContext<CartContextData>({} as CartContextData);
 export function CartProvider({ children }: CartProviderProps): JSX.Element {
   const [cart, setCart] = useState<Product[]>([]);
 
-  useEffect(() => {
+  async function handleGetOrders() {
     if (typeof window === 'undefined') {
       return;
     }
+
+    // const { data } = await api.get('order/show');
 
     const storagedCart = localStorage.getItem('@HedtMoveis:cart');
 
     if (storagedCart) {
       return setCart(JSON.parse(storagedCart));
     }
+  }
+
+  useEffect(() => {
+    handleGetOrders();
   }, []);
 
   const clearCart = () => {
@@ -78,8 +84,8 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
   const addProduct = async (productId: number) => {
     try {
-      const { data } = await api.get(`stock/${productId}`);
-      const stock: Stock = data;
+      const { data } = await api.get(`cardmostviewedproducts/${productId}`);
+      const stock: Product = data;
       const productExists = cart.find(product => product.id === productId);
 
       if (!productExists && stock.amount > 0) {
@@ -110,12 +116,14 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     }
   };
 
-  const removeProduct = (productId: number) => {
+  const removeProduct = async (productId: number) => {
     const productIndex = cart.findIndex(product => product.id === productId);
 
     if (productIndex < 0) {
       return toast.error('Erro na remoção do produto');
     }
+
+    // const { data } = await api.post(`order/decrement`, productId);
 
     const copyCart = cart;
 
@@ -133,8 +141,8 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     amount,
   }: UpdateProductAmount) => {
     try {
-      const { data } = await api.get(`stock/${productId}`);
-      const stock: Stock = data;
+      const { data } = await api.get(`cardmostviewedproducts/${productId}`);
+      const stock: Product = data;
 
       if (amount <= stock.amount) {
         const newCartList = cart.map(product =>
